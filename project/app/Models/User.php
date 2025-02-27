@@ -49,4 +49,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    public function staff()
+    {
+        return $this->hasMany(Staff::class);
+    }
+    public function candidates()
+    {
+        return $this->hasMany(Candidates::class);
+    }
 }

@@ -23,6 +23,6 @@ Route::get('/dashboard', function () {
 Route::get('/platforme', function () {
     return view('front.home');
 })->middleware(['auth'])->name('platforme');
-Route::get('/platforme', )->middleware(['auth'])->name('platforme');
+// Route::get('/platforme', )->middleware(['auth'])->name('platforme');
 
 require __DIR__.'/auth.php';
