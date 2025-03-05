@@ -38,7 +38,7 @@ Route::get('/platforme', function () {
 
 
 
-Route::resource('questionsAndAnswers', HistoryTestController::class)->middleware(['auth']);
+Route::resource('/questionsAndAnswers', HistoryTestController::class)->middleware(['auth']);
 
 Route::resource('questions', QuestionsController::class)->middleware(['auth']);
 

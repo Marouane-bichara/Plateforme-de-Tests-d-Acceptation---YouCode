@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answers;
 use App\Models\Questions;
 use App\Models\Candidates;
 use App\Models\HistoryTest;
@@ -19,17 +20,52 @@ class HistoryTestController extends Controller
     public function index()
     {
         //
-
-        $questionsNum = Questions::count();
-
-        // Fetch the next question that is NOT in HistoryTest
-        $questions = Questions::whereNotIn('id', HistoryTest::pluck('question_id'))
-            ->orderBy('id')
-            ->first();
-        
-    
+        $resault = 60;
         $candidate = User::findOrFail(Auth::user()->id);
         $candidateinfo = Candidates::where('user_id', $candidate->id)->first();
+
+        $questions = Questions::whereNotIn('id', HistoryTest::where('candidate_id', $candidate->id)->pluck('question_id'))
+        ->orderBy('id')
+        ->first();
+
+            if(!$questions)
+            {
+                $idquestions = HistoryTest::where('candidate_id', $candidate->id)->pluck('question_id');
+                $allquestionsans = Questions::whereIn('id', $idquestions)->get();
+                // dd($allquestionsans[1]->points);   
+                $numberofquestions = count($allquestionsans);
+
+                $answersofUser = HistoryTest::where('candidate_id', $candidate->id)->pluck('answers_id');
+
+
+                $theanswers = Answers::whereIn('id', $answersofUser)->get();
+
+
+                $score = 0;
+
+
+                for($x = 0; $x < $numberofquestions; $x++)
+                {
+                    if($theanswers[$x]->is_correct == true)
+                    {
+                        $score += $allquestionsans[$x]->points;
+                    }
+                }
+
+          ; 
+
+                if($score >= $resault)
+                {
+                    dd('Accepted');
+                }
+                else
+                {
+                    dd('Refused');
+                }
+
+            }
+    
+
     
     
         return view('front.candidates.questions.questions', ['candidate' => $candidate, 'candidateinfo' => $candidateinfo , 'questions' => $questions ]);
@@ -54,10 +90,12 @@ class HistoryTestController extends Controller
     public function store(Request $request)
     {
         //
+
+
         HistoryTest::create([
             'candidate_id' => Auth::user()->id,
+            'answers_id' => $request->answer_id,
             'question_id' => $request->question_id,
-            'answer_id' => $request->answer_id,
         ]);
 
         return redirect()->route('questionsAndAnswers.index');

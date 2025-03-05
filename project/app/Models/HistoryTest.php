@@ -13,5 +13,6 @@ class HistoryTest extends Model
     protected $fillable = [
         'candidate_id',
         'answers_id',
+        'question_id',
     ];
 }

@@ -208,7 +208,7 @@
       <!-- Form Wrapper -->
       <form action="{{ route('questionsAndAnswers.store') }}" method="POST" id="quiz-form" class="w-full">
         @csrf
-        <input type="hidden" name="question_id" value="{{ $questions->id ?? '' }}">
+        <input type="hidden" name="question_id" value="{{ $questions->id }}">
         <input type="hidden" name="time_spent" id="time-spent" value="0">
         
         <!-- Question Card -->
