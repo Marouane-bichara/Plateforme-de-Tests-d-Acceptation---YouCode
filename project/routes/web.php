@@ -1,6 +1,15 @@
 <?php
 
+use App\Models\Answers;
+use App\Models\Questions;
+use App\Models\Candidates;
+use App\Models\HistoryTest;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CandidateController;
+use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\HistoryTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +32,21 @@ Route::get('/dashboard', function () {
 Route::get('/platforme', function () {
     return view('front.home');
 })->middleware(['auth'])->name('platforme');
-// Route::get('/platforme', )->middleware(['auth'])->name('platforme');
+
+
+
+
+
+
+Route::resource('questionsAndAnswers', HistoryTestController::class)->middleware(['auth']);
+
+Route::resource('questions', QuestionsController::class)->middleware(['auth']);
+
+Route::resource('candidate' , CandidateController::class)->middleware(['auth']);
+
+
+
+
+
 
 require __DIR__.'/auth.php';

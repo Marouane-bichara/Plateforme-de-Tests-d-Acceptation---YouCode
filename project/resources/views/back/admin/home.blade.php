@@ -66,6 +66,12 @@
                         </a>
                     </li>
                     <li>
+                    <a href="questions" id="questionsDropdownToggle" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-indigo-800 text-indigo-200 hover:text-white border-l-4 border-transparent hover:border-indigo-400 pr-6">
+                            <span class="inline-flex justify-center items-center ml-4">
+                                <i class="fas fa-clipboard-list w-5 h-5"></i>
+                            </span>
+                            <span class="ml-2 text-sm tracking-wide truncate">Questions</span>
+                        </a>
                         <a href="#" id="settingsDropdownToggle" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-indigo-800 text-indigo-200 hover:text-white border-l-4 border-transparent hover:border-indigo-400 pr-6">
                             <span class="inline-flex justify-center items-center ml-4">
                                 <i class="fas fa-cog w-5 h-5"></i>

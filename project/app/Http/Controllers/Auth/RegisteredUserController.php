@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller
         if (Auth::user()->role_id == 1) {
             return redirect('dashboard');
         } elseif (Auth::user()->role_id == 5) {
-            return redirect('platforme');
+            return redirect('candidate');
         } else {
             return redirect()->intended(RouteServiceProvider::HOME);
         }
