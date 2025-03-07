@@ -175,9 +175,9 @@
                 </form>
             </div>
         </div>
-    @endif
+    @endif 
     @if($candidateinfo)
-    <form action="{{ route('questionsAndAnswers') }}" method="get" enctype="multipart/form-data" class="p-6">
+    <form action="{{ route('questionsAndAnswers.index') }}" method="get" enctype="multipart/form-data" class="p-6">
         <button type="submit" class="ml-3 inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none">
                 Start the test
             <i class="fas fa-arrow-right ml-2"></i>

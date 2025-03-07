@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Answers;
 use App\Models\Questions;
+use App\Models\Candidates;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreQuestionsRequest;
 
 
@@ -20,7 +22,15 @@ class QuestionsController extends Controller
     {
         //
         $questions = Questions::with('answers')->get();
-        return view('back.admin.questions', compact('questions'));
+        $user = Candidates::where('user_id', Auth::user()->id)->first();
+        if($user->resault == 'Refused')
+        {
+            $resault = $user->resault;
+            return view('front.candidates.resault.resault', ['resault' => $resault]);
+        }else{
+            return view('back.admin.questions', compact('questions'));
+        }
+
     }
 
     /**

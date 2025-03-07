@@ -52,16 +52,21 @@ class HistoryTestController extends Controller
                     }
                 }
 
-          ; 
 
-                if($score >= $resault)
+                if($resault > $score)
                 {
-                    dd('Accepted');
-                }
-                else
-                {
-                    dd('Refused');
-                }
+
+
+                    Candidates::where('id', Auth::user()->id)->update(['resault' => 'Refused']);
+                    return redirect()->route('resault.index');
+
+
+             }else{
+
+                Candidates::where('id', Auth::user()->id)->update(['resault' => 'Accepted']);
+
+                    return redirect()->route('resault.index');
+             }
 
             }
     

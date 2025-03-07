@@ -133,7 +133,7 @@
     <div class="max-w-7xl mx-auto">
       <div class="flex justify-center">
         <div class="w-full max-w-lg lg:w-2/3">
-          @if($passed ?? true)
+          @if($resault == 'Accepted')
             <!-- Success Result Card -->
             <div class="relative overflow-hidden bg-white rounded-2xl shadow-xl transition-all hover:shadow-2xl">
               <!-- Status Banner -->

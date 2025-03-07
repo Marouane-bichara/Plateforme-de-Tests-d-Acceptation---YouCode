@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answers;
+use App\Models\Questions;
+use App\Models\Candidates;
+use App\Models\HistoryTest;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 class Resault extends Controller
 {
@@ -14,6 +20,11 @@ class Resault extends Controller
     public function index()
     {
         //
+
+        $user = Candidates::where('user_id', Auth::user()->id)->first();
+        $resault = $user->resault;
+        return view('front.candidates.resault.resault', ['resault' => $resault]);
+
     }
 
     /**

@@ -1,9 +1,7 @@
 <?php
 
-use App\Models\Answers;
-use App\Models\Questions;
-use App\Models\Candidates;
-use App\Models\HistoryTest;
+
+use App\Http\Controllers\Resault;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +41,8 @@ Route::resource('/questionsAndAnswers', HistoryTestController::class)->middlewar
 Route::resource('questions', QuestionsController::class)->middleware(['auth']);
 
 Route::resource('candidate' , CandidateController::class)->middleware(['auth']);
+
+Route::resource('/resault', Resault::class)->middleware(['auth']);
 
 
 
