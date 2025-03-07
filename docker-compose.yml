@@ -2,13 +2,13 @@ version: '3.8'
 
 services:
   db:
-    container_name: postgres_container
+    container_name: postgres_cont
     image: postgres:latest
     restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: root_password
-      POSTGRES_DB: youvento
+      POSTGRES_DB: youcodetest
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
@@ -17,7 +17,7 @@ services:
       - laravel_network
 
   pgadmin:
-    container_name: pgadmin4_container_v2
+    container_name: pgadmin4_cont
     image: dpage/pgadmin4:9.0
     restart: always
     environment:
@@ -32,7 +32,7 @@ services:
     build:
       context: ./php
       dockerfile: Dockerfile
-    container_name: laravel_app
+    container_name: laravel_a
     restart: always
     working_dir: /var/www/html
     volumes:
